@@ -1,0 +1,55 @@
+.page_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #D93BFC;
+}
+
+.page_block {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.image_block {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9D8FE;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.image_block_icon {
+    width: 80%;
+    padding: 0% 10% 0% 10%
+}
+
+.messages_block {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+}
+
+.messages_container {
+    width: 100%;
+    height: 100%;
+}
+
+.messages_view {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

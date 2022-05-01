@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import './Auth.css';
 
-import smartwageLogo from './smartwagetransparent.png';
 import mobilePayIcon from './mobilepaypink.svg';
 
 function Auth() {
@@ -60,9 +59,7 @@ function Auth() {
       <div className='page_container'>
         <div className='page_block'>
           <div className='image_block'>
-            <img className='image_block_logo' src={smartwageLogo} alt='Smartwage Logo Icon' />
             <img className='image_block_icon' src={mobilePayIcon} alt='Mobile Pay Icon' />
-            <h1>WhatsApp Deck</h1>
           </div>
           <div className='form_block'>
             <form
