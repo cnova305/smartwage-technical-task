@@ -43,6 +43,9 @@ function Auth() {
       ).then((response) => {
         console.log(response)
       })
+      .catch((error)=> {
+        console.log(error)
+      })
     }
   }
   return (
@@ -71,7 +74,7 @@ function Auth() {
                 />
                 <label className='form_input_label'>Password</label>
                 <input
-                  className='form_input' type='text'
+                  className='form_input' type='password'
                   value={password}
                   onChange={handlePasswordChange}
                   />

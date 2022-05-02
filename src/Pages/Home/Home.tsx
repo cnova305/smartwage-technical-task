@@ -12,6 +12,9 @@ import mobileChatIcon from './mobilechat.svg';
 
 function Home() {
 
+    const user = sessionStorage.getItem('smartWageUserToken')
+    
+
     const whatsAppMessage: WhatsAppMessage = {
         messageSender: '',
         messageBody: '',
