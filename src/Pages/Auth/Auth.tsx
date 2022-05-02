@@ -2,36 +2,25 @@ import React, { useState } from 'react';
 
 import './Auth.css';
 
+import Axios from "axios";
+
 import mobilePayIcon from './mobilepaypink.svg';
 
 function Auth() {
 
   // Setting Up Input States
 
-  const [number, setNumber] = useState('')
-  const [email, setEmail] = useState('')
+  const [username, setusername] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
 
-  // Setting Up View State
-
-  const [viewsignup, setViewsignup] = useState(true)
-
-  const handleViewsignup = () => {
-    setViewsignup(!viewsignup)
-  } 
 
 
   // Updating Input States
 
-  function handleNumberChange(e: { target: { value: string } }) {
-    const numberValue: string = e.target.value;
-    setNumber(numberValue)
-  }
-
-  function handleEmailChange(e: { target: { value: string } }) {
-  const emailValue: string = e.target.value;
-  setEmail(emailValue)
+  function handleUsernameChange(e: { target: { value: string } }) {
+  const usernameValue: string = e.target.value;
+  setusername(usernameValue)
   }
 
   function handlePasswordChange(e: { target: { value: string } }) {
@@ -41,17 +30,19 @@ function Auth() {
 
   // Submit Registration Form
 
-  function submitSignUp(event: React.FormEvent<HTMLFormElement>) {
+  function submitSignIn(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    if(number !== '+14155238886') {
-      setErrMsg('This is the wrong WhatsApp Number')
-    } else if (!email) {
-      setErrMsg('Please enter your Email Address')
+    if (!username) {
+      setErrMsg('Please enter your username Address')
     } else if (!password) {
       setErrMsg('Please enter your Password')
     } else {
-      const userSignup = {number, email, password}
-      console.log(userSignup) 
+      const userSignin = {username, password}
+      Axios.post('https://d069-41-216-203-70.sa.ngrok.io/api/whatsAppMessage-token/',
+      userSignin,
+      ).then((response) => {
+        console.log(response)
+      })
     }
   }
   return (
@@ -64,26 +55,19 @@ function Auth() {
           <div className='form_block'>
             <form
               className='form_container'
-              onSubmit={submitSignUp}> 
+              onSubmit={submitSignIn}> 
               <div className='form_title'>
                 <h1> Get Started</h1>
                 <div className='form_login'>
                   <span>Already have an account</span>
-                  <button className='form_login_button' onClick={handleViewsignup}>Log in</button>
                 </div>
               </div>
               <div className='form_input_block'>
-                <label className='form_input_label'>WhatsApp Number</label>
-                <input 
-                  className='form_input' type='text'
-                  value={number}
-                  onChange={handleNumberChange}
-                />
-                <label className='form_input_label'>Email</label>
+                <label className='form_input_label'>Username</label>
                 <input
                   className='form_input' type='text'
-                  value={email}
-                  onChange={handleEmailChange}
+                  value={username}
+                  onChange={handleUsernameChange}
                 />
                 <label className='form_input_label'>Password</label>
                 <input
