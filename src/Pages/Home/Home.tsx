@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './Home.css';
 
@@ -19,15 +19,16 @@ function Home() {
 
     const [whatstsAppMessages, setWhatsAppMessages] = useState<Array<WhatsAppMessage>>([whatsAppMessage]);
 
-    const getMessages = async () => {
-        Axios.get('http://127.0.0.1:8000/api/whatsAppMessage-list/',
-        ).then((response) => {
-            console.log(response.data)
-            setWhatsAppMessages(response.data)
-        })
-    }
-
-    getMessages()
+    useEffect(() => {
+        const getMessages = async () => {
+            Axios.get('https://smart-wage-task-backend.herokuapp.com/api/whatsAppMessage-list/',
+            ).then((response) => {
+                console.log(response.data)
+                setWhatsAppMessages(response.data)
+            })
+        }
+        getMessages()
+      }, []); 
 
 return (
     <div className='page_container'>

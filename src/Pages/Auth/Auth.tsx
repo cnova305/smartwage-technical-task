@@ -38,7 +38,7 @@ function Auth() {
       setErrMsg('Please enter your Password')
     } else {
       const userSignin = {username, password}
-      Axios.post('https://d069-41-216-203-70.sa.ngrok.io/api/whatsAppMessage-token/',
+      Axios.post('https://smart-wage-task-backend.herokuapp.com/api/whatsAppMessage-token/',
       userSignin,
       ).then((response) => {
         console.log(response)
