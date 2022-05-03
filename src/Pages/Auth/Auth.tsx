@@ -47,7 +47,7 @@ function Auth() {
         navigator('/messages')
       })
       .catch((error)=> {
-        console.log(error)
+        setErrMsg('Please enter the correct login details')
       })
     }
   }
@@ -81,7 +81,7 @@ function Auth() {
               </div>
               <p>{errMsg}</p>
               <button className='submit_button' type='submit'>
-                Register
+                Log In
               </button>
             </form>
           </div>
@@ -122,7 +122,6 @@ function Auth() {
 
           </div>
         </div>
-
       </div>
     </>
   )
