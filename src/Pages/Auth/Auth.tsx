@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Auth.css';
 
@@ -14,8 +15,6 @@ function Auth() {
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
 
-
-
   // Updating Input States
 
   function handleUsernameChange(e: { target: { value: string } }) {
@@ -27,6 +26,9 @@ function Auth() {
   const passwordValue: string = e.target.value;
   setPassword(passwordValue)
   }
+
+  // Setting Up Navigate Function
+  let navigator = useNavigate();
 
   // Submit Registration Form
 
@@ -41,7 +43,8 @@ function Auth() {
       Axios.post('https://smart-wage-task-backend.herokuapp.com/api/token/',
       userSignin,
       ).then((response) => {
-        console.log(response)
+        sessionStorage.setItem('smartWageUserToken', JSON.stringify(response.data.access))
+        navigator('/messages')
       })
       .catch((error)=> {
         console.log(error)
@@ -60,10 +63,7 @@ function Auth() {
               className='form_container'
               onSubmit={submitSignIn}> 
               <div className='form_title'>
-                <h1> Get Started</h1>
-                <div className='form_login'>
-                  <span>Already have an account</span>
-                </div>
+                <h1>Welcome</h1>
               </div>
               <div className='form_input_block'>
                 <label className='form_input_label'>Username</label>
@@ -74,7 +74,7 @@ function Auth() {
                 />
                 <label className='form_input_label'>Password</label>
                 <input
-                  className='form_input' type='password'
+                  className='form_input' type='text'
                   value={password}
                   onChange={handlePasswordChange}
                   />
@@ -86,6 +86,43 @@ function Auth() {
             </form>
           </div>
         </div>
+      </div>
+      <div className='mobile_page_container'>
+        <div className='mobile_page_block'>
+          <div className='mobile_image_block'>
+            <img className='mobile_image_block_icon' src={mobilePayIcon} alt='Mobile Pay Icon' />
+          </div>
+          <div className='mobile_form_block'>
+            <form
+            className='form_container'
+            onSubmit={submitSignIn}
+            >
+              <div className='mobile_form_title'>
+                <h1> Get Started</h1>
+              </div>
+              <div className='mobile_form_input_block'>
+                <label className='mobile_form_input_label'>Username</label>
+                <input
+                  className='mobile_form_input' type='text'
+                  value={username}
+                  onChange={handleUsernameChange}
+                />
+                <label className='mobile_form_input_label'>Password</label>
+                <input
+                  className='mobile_form_input' type='text'
+                  value={password}
+                  onChange={handlePasswordChange}
+                  />
+              </div>
+              <p>{errMsg}</p>
+              <button className='mobile_submit_button' type='submit'>
+                Register
+              </button>
+            </form>
+
+          </div>
+        </div>
+
       </div>
     </>
   )
