@@ -98,7 +98,7 @@ function Auth() {
             onSubmit={submitSignIn}
             >
               <div className='mobile_form_title'>
-                <h1> Get Started</h1>
+                <h1>Welcome</h1>
               </div>
               <div className='mobile_form_input_block'>
                 <label className='mobile_form_input_label'>Username</label>

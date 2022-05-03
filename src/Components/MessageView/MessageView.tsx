@@ -25,7 +25,7 @@ function MessageView({
                     />
                 </div>
                 <div className='message_number_text'>
-                    {message.messageSender}
+                    {message.messageSender?.split(':')[1] ||""}
                 </div>
             </div>
             <div className='message_text'>
