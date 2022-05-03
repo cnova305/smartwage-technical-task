@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 import MessageView from '../../Components/MessageView/MessageView';
@@ -12,8 +12,15 @@ import mobileChatIcon from './mobilechat.svg';
 
 function Home() {
 
+    // Setting Up Navigate Function
+    let navigator = useNavigate();
+
     const user = sessionStorage.getItem('smartWageUserToken')
-    
+
+    if (user === null) {
+        navigator('/')
+    }
+
 
     const whatsAppMessage: WhatsAppMessage = {
         messageSender: '',
