@@ -53,7 +53,7 @@ function Home() {
     
     // Filtering messages by sender number
 
-    var filteredMessages = whatstsAppMessages.reverse().filter(
+    var filteredMessages = whatstsAppMessages.filter(
         (filteredmesssage) =>
         !searchString || filteredmesssage?.messageSender?.toLocaleLowerCase().includes(searchString.toLowerCase()))
 
